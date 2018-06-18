@@ -35,4 +35,12 @@ class ApplicationController < Sinatra::Base
    @recipe = Recipe.find(params[:id])
    erb :edit
 
+  post "/recipes/:id" do
+    @recipe = Recipe.find(params[:id])
+    @recipe.title = params[:title]
+    @recipe.content = params[:content]
+    @recipe.save
+    redirect to "/recipes/#{recipe.id}"
+  end
+
 end
